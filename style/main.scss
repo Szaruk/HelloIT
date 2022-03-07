@@ -6,6 +6,13 @@
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
+a {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: black;
+  }
+}
 
 //Loader
 #container-loader {
@@ -108,7 +115,6 @@ nav {
 
 //Main
 main {
-  min-height: 100vh;
   .scrollUp {
     display: none;
     position: fixed;
@@ -157,7 +163,7 @@ main {
         margin-right: 30px;
         padding: 10px;
         border-radius: 10px;
-        background-color: #153359;
+        background-color: $secondaryColor;
         color: white;
         transition: transform 0.2s ease;
         &:hover {
@@ -186,9 +192,8 @@ main {
       z-index: 1;
       transform: scale(1.05);
     }
-    @media screen and (max-width: 400px) {
-      margin-left: 10px;
-      margin-right: 10px;
+    @media screen and (max-width: 450px) {
+      width: 18rem;
     }
     @media screen and (min-width: 2560px) {
       width: 40rem;
@@ -214,6 +219,109 @@ main {
       }
     }
   }
+  //Post-more
+  #postDetailsMore {
+    opacity: 0;
+  }
+  .post-more {
+    position: relative;
+    transition: transform 0.4s ease;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+    &-text {
+      border-radius: 0 0 5px 5px;
+      background-color: rgba(196, 196, 196, 0.8);
+      position: absolute;
+      bottom: -0.5px;
+    }
+  }
+  //Projects
+  #projects-options {
+    background: $secondaryColor;
+    border-radius: 20px;
+    div:nth-child(1) {
+      border-radius: 20px;
+      transition: all 0.5s ease;
+      &:hover {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.5);
+      }
+    }
+    div:nth-child(2) {
+      border-radius: 20px;
+      transition: all 0.5s ease;
+      &:hover {
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+  .our-projects {
+    overflow-x: auto;
+    position: relative;
+    white-space: nowrap;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    img {
+      border-radius: 10px;
+      transition: transform 0.5s ease;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+    i {
+      z-index: 1;
+      color: $secondaryColor;
+      font-size: 2.5rem;
+      position: absolute;
+      right: 0;
+      top: -10%;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  //Statute
+  .statute-title {
+    width: 35%;
+    background-color: $mainColor;
+    border-radius: 0 20px 20px 0;
+    @media screen and (max-width: 855px) {
+      width: 55%;
+    }
+    @media screen and (max-width: 540px) {
+      width: 91%;
+    }
+  }
+  li {
+    opacity: 0;
+    list-style: none;
+    &::before {
+      content: "";
+      margin: 0;
+      padding: 36px 0 36px 50px;
+      list-style: none;
+      background-image: url("/img/logov2.png");
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 40px;
+    }
+  }
+  //Contact
+  #contact-title {
+    background-color: $secondaryColor;
+    border-radius: 20px;
+  }
+  form {
+    .btn {
+      background-color: $secondaryColor;
+      border-radius: 20px;
+    }
+  }
 }
 
 //Footer
@@ -221,7 +329,7 @@ footer {
   clear: both;
   background-color: $mainColor;
   span:nth-child(1) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     @media screen and (max-width: 767px) {
       margin-bottom: 10px;
     }

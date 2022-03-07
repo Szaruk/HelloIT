@@ -5,6 +5,15 @@
   scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
 #container-loader {
   background-color: #317ed9;
   height: 100%;
@@ -120,10 +129,6 @@ nav #hamburger-exit:hover {
   cursor: pointer;
 }
 
-main {
-  min-height: 100vh;
-}
-
 main .scrollUp {
   display: none;
   position: fixed;
@@ -229,10 +234,9 @@ main .card:hover {
           transform: scale(1.05);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   main .card {
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 18rem;
   }
 }
 
@@ -273,13 +277,146 @@ main .pagination .site-btn:nth-child(2):hover {
           transform: scale(1.2);
 }
 
+main #postDetailsMore {
+  opacity: 0;
+}
+
+main .post-more {
+  position: relative;
+  -webkit-transition: -webkit-transform 0.4s ease;
+  transition: -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+}
+
+main .post-more:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+main .post-more-text {
+  border-radius: 0 0 5px 5px;
+  background-color: rgba(196, 196, 196, 0.8);
+  position: absolute;
+  bottom: -0.5px;
+}
+
+main #projects-options {
+  background: #153359;
+  border-radius: 20px;
+}
+
+main #projects-options div:nth-child(1) {
+  border-radius: 20px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+main #projects-options div:nth-child(1):hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+main #projects-options div:nth-child(2) {
+  border-radius: 20px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+main #projects-options div:nth-child(2):hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+main .our-projects {
+  overflow-x: auto;
+  position: relative;
+  white-space: nowrap;
+}
+
+main .our-projects::-webkit-scrollbar {
+  display: none;
+}
+
+main .our-projects img {
+  border-radius: 10px;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+}
+
+main .our-projects img:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+main .our-projects i {
+  z-index: 1;
+  color: #153359;
+  font-size: 2.5rem;
+  position: absolute;
+  right: 0;
+  top: -10%;
+}
+
+main .our-projects i:hover {
+  cursor: pointer;
+}
+
+main .statute-title {
+  width: 35%;
+  background-color: #317ed9;
+  border-radius: 0 20px 20px 0;
+}
+
+@media screen and (max-width: 855px) {
+  main .statute-title {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  main .statute-title {
+    width: 91%;
+  }
+}
+
+main li {
+  opacity: 0;
+  list-style: none;
+}
+
+main li::before {
+  content: "";
+  margin: 0;
+  padding: 36px 0 36px 50px;
+  list-style: none;
+  background-image: url("/img/logov2.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 40px;
+}
+
+main #contact-title {
+  background-color: #153359;
+  border-radius: 20px;
+}
+
+main form .btn {
+  background-color: #153359;
+  border-radius: 20px;
+}
+
 footer {
   clear: both;
   background-color: #317ed9;
 }
 
 footer span:nth-child(1) {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 @media screen and (max-width: 767px) {
