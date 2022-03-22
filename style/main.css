@@ -132,7 +132,7 @@ nav #hamburger-exit:hover {
 main .scrollUp {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   right: 30px;
   bottom: 20%;
 }
@@ -302,44 +302,93 @@ main .post-more-text {
   bottom: -0.5px;
 }
 
-main #projects-options {
-  background: #153359;
-  border-radius: 20px;
-}
-
-main #projects-options div:nth-child(1) {
-  border-radius: 20px;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-main #projects-options div:nth-child(1):hover {
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-main #projects-options div:nth-child(2) {
-  border-radius: 20px;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-main #projects-options div:nth-child(2):hover {
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-main .our-projects {
-  overflow-x: auto;
+main .inner-project {
   position: relative;
+}
+
+main .inner-project .project-btn-r {
+  margin-top: 10px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 90%;
+  background: white;
+  -webkit-box-shadow: 0 0 5px 6px white;
+          box-shadow: 0 0 5px 6px white;
+}
+
+@media screen and (max-width: 767px) {
+  main .inner-project .project-btn-r {
+    opacity: 0;
+  }
+}
+
+main .inner-project .project-btn-r i {
+  font-size: 2.5rem;
+  color: #153359;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  main .inner-project .project-btn-r i {
+    font-size: 1.5rem;
+    margin-right: 1px;
+  }
+}
+
+main .inner-project .project-btn-r i:hover {
+  cursor: pointer;
+}
+
+main .inner-project .project-btn-l {
+  margin-top: 10px;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: -10px;
+  height: 100%;
+  background: white;
+  -webkit-box-shadow: 0 0 5px 6px white;
+          box-shadow: 0 0 5px 6px white;
+}
+
+@media screen and (max-width: 767px) {
+  main .inner-project .project-btn-l {
+    opacity: 0;
+  }
+}
+
+main .inner-project .project-btn-l i {
+  font-size: 2.5rem;
+  color: #153359;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  main .inner-project .project-btn-l i {
+    font-size: 1.5rem;
+    margin-left: 5px;
+  }
+}
+
+main .inner-project .project-btn-l i:hover {
+  cursor: pointer;
+}
+
+main .inner-project .our-projects {
+  overflow-x: auto;
   white-space: nowrap;
 }
 
-main .our-projects::-webkit-scrollbar {
+main .inner-project .our-projects::-webkit-scrollbar {
   display: none;
 }
 
-main .our-projects img {
+main .inner-project .our-projects img {
+  width: 25rem;
   border-radius: 10px;
   -webkit-transition: -webkit-transform 0.5s ease;
   transition: -webkit-transform 0.5s ease;
@@ -347,23 +396,22 @@ main .our-projects img {
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 
-main .our-projects img:hover {
+@media screen and (max-width: 800px) {
+  main .inner-project .our-projects img {
+    width: 20rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main .inner-project .our-projects img {
+    width: 13rem;
+  }
+}
+
+main .inner-project .our-projects img:hover {
   cursor: pointer;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-}
-
-main .our-projects i {
-  z-index: 1;
-  color: #153359;
-  font-size: 2.5rem;
-  position: absolute;
-  right: 0;
-  top: -10%;
-}
-
-main .our-projects i:hover {
-  cursor: pointer;
 }
 
 main .statute-title {
@@ -408,6 +456,111 @@ main #contact-title {
 main form .btn {
   background-color: #153359;
   border-radius: 20px;
+}
+
+main .inner-group {
+  height: 100%;
+  background-color: white;
+  -webkit-box-shadow: 0 0 5px 6px white;
+          box-shadow: 0 0 5px 6px white;
+}
+
+main .inner-group i {
+  font-size: 2.5rem;
+  color: #153359;
+}
+
+main .inner-group i:hover {
+  cursor: pointer;
+}
+
+main .inner-group:nth-child(1) {
+  z-index: 1;
+  top: 0;
+  right: -1.2%;
+  width: 40px;
+}
+
+main .inner-group:nth-child(2) {
+  z-index: 1;
+  top: 0;
+  left: -2%;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  padding-right: 3.5rem;
+  width: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  main .inner-group:nth-child(2) {
+    padding-right: 2.5rem;
+    width: 20px;
+  }
+}
+
+main .inner-members {
+  height: 25.9rem;
+  position: relative;
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+main .inner-members::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 440px) {
+  main .inner-members {
+    height: 19.5rem;
+  }
+}
+
+main .inner-members .outer-members {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-width: 100%;
+}
+
+main .inner-members .outer-members .member {
+  width: 20rem;
+  position: relative;
+}
+
+@media screen and (max-width: 440px) {
+  main .inner-members .outer-members .member {
+    width: 15rem;
+  }
+}
+
+main .inner-members .outer-members .member::after {
+  content: "";
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 99%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), to(rgba(0, 0, 0, 0.4)));
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.4));
+}
+
+main .inner-members .outer-members .member img {
+  width: 100%;
+}
+
+main .inner-members .outer-members .member-text {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (max-width: 440px) {
+  main .inner-members .outer-members .member-text {
+    bottom: 15px;
+  }
 }
 
 footer {

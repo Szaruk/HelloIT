@@ -210,7 +210,7 @@ const CategorySlider = () => {
 const scrollUp = document.querySelector(".scrollUp");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY >= 400) {
+  if (window.scrollY >= 400 && location.pathname != "/projects.html") {
     scrollUp.style.display = "block";
     scrollUp.addEventListener("click", () => {
       body.scrollIntoView();
@@ -280,16 +280,134 @@ const statuteTitlesAnimation = () => {
     },
   });
 };
-const ourProjects = document.querySelectorAll(".our-projects");
-const projectsImg = document.querySelectorAll(".our-projects img");
-ourProjects.forEach((test, index) => {
-  if (index === 0) {
-    console.log(test.getBoundingClientRect());
-    const test2 = test.lastElementChild;
-    console.log(test2.getBoundingClientRect());
+
+//Our projects scroll
+const scrollProject = () => {
+  const projectsBox = document.querySelectorAll(".our-projects");
+  const innerProjects = document.querySelectorAll(".inner-project");
+  const projectButton = innerProjects[0].children;
+  const projectButton2 = innerProjects[1].children;
+  let firstProject = projectsBox[0].firstElementChild;
+  let lastProject = projectsBox[0].lastElementChild;
+  let firstProject2 = projectsBox[1].firstElementChild;
+  let lastProject2 = projectsBox[1].lastElementChild;
+  const imgWidth = firstProject.getBoundingClientRect().width;
+  const firstProjectLeft = firstProject.getBoundingClientRect().left;
+  //OUR PROJECTS
+  //Button right our projects
+  projectButton[0].addEventListener("click", () => {
+    projectsBox[0].scrollLeft += imgWidth;
+    projectsBox[0].addEventListener("scroll", () => {
+      /*
+      console.log(lastProject.getBoundingClientRect().left);
+      console.log(projectButton[0].getBoundingClientRect().right);
+      */
+      if (firstProject.getBoundingClientRect().left < firstProjectLeft) {
+        projectButton[1].classList.replace("d-none", "d-flex");
+      }
+      if (
+        lastProject.getBoundingClientRect().right <
+        projectsBox[0].getBoundingClientRect().right
+      ) {
+        projectButton[0].classList.replace("d-flex", "d-none");
+      }
+    });
+  });
+  projectButton[1].addEventListener("click", () => {
+    projectsBox[0].scrollLeft -= imgWidth;
+    projectsBox[0].addEventListener("scroll", () => {
+      if (lastProject.getBoundingClientRect().right > 0) {
+        projectButton[0].classList.replace("d-none", "d-flex");
+      }
+      if (firstProject.getBoundingClientRect().left === firstProjectLeft) {
+        projectButton[1].classList.replace("d-flex", "d-none");
+      }
+    });
+  });
+
+  projectButton2[0].addEventListener("click", () => {
+    projectsBox[1].scrollLeft += imgWidth;
+    projectsBox[1].addEventListener("scroll", () => {
+      if (firstProject2.getBoundingClientRect().left < firstProjectLeft) {
+        projectButton2[1].classList.replace("d-none", "d-flex");
+      }
+      if (
+        lastProject2.getBoundingClientRect().right <
+        projectsBox[1].getBoundingClientRect().right
+      ) {
+        projectButton2[0].classList.replace("d-flex", "d-none");
+      }
+    });
+  });
+  projectButton2[1].addEventListener("click", () => {
+    projectsBox[1].scrollLeft -= imgWidth;
+    projectsBox[1].addEventListener("scroll", () => {
+      if (
+        lastProject2.getBoundingClientRect().right >
+        projectsBox[1].getBoundingClientRect().right
+      ) {
+        projectButton2[0].classList.replace("d-none", "d-flex");
+      }
+      if (firstProject2.getBoundingClientRect().left > 0) {
+        projectButton2[1].classList.replace("d-flex", "d-none");
+      }
+    });
+  });
+};
+
+//About Us side
+const innerGroup = document.querySelectorAll(".inner-group");
+const personImg = document.querySelector(".member img");
+
+//About Us slider
+innerGroup.forEach((currentGroup) => {
+  //Button Box
+  const parent = currentGroup.parentElement;
+  //Team's Photos Box
+  const outerGroup = parent.lastElementChild.firstElementChild;
+  if (outerGroup.getBoundingClientRect().width < window.innerWidth) {
+    currentGroup.classList.remove("d-md-flex");
   }
+  currentGroup.addEventListener("click", () => {
+    if (currentGroup === parent.children[0]) {
+      //Swip right images
+      parent.lastElementChild.scrollLeft += personImg.clientWidth;
+      parent.lastElementChild.addEventListener("scroll", () => {
+        //Show left button
+        parent.children[1].firstElementChild.classList.replace(
+          "d-none",
+          "d-flex"
+        );
+        if (
+          currentGroup.getBoundingClientRect().right >
+          outerGroup.lastElementChild.getBoundingClientRect().right
+        ) {
+          //Hide right button
+          parent.children[0].firstElementChild.classList.add("d-none");
+        }
+      });
+    } else {
+      //Swipe left images
+      parent.lastElementChild.scrollLeft -= personImg.clientWidth;
+      parent.lastElementChild.addEventListener("scroll", () => {
+        //Show right button
+        parent.children[0].firstElementChild.classList.replace(
+          "d-none",
+          "d-flex"
+        );
+        if (outerGroup.firstElementChild.getBoundingClientRect().left > 0) {
+          //Hide left button
+          parent.children[1].firstElementChild.classList.replace(
+            "d-flex",
+            "d-none"
+          );
+        }
+      });
+    }
+  });
 });
 
+//Main animation for current pathname
 if (location.pathname === "/index.html" || location.pathname === "/") {
   body.scrollIntoView();
   AnimationMain();
@@ -298,6 +416,8 @@ if (location.pathname === "/index.html" || location.pathname === "/") {
   PostDetailsAnimation();
 } else if (location.pathname === "/statute.html") {
   statuteTitlesAnimation();
+} else if (location.pathname === "/projects.html") {
+  scrollProject();
 }
-
+//Mobile animation navbar
 AnimationHamburger();
